@@ -3,7 +3,7 @@ from flask import Flask, render_template
 from config import config
 
 
-cfg = config.read()
+cfg = config.read("config.toml")
 app = Flask(__name__)
 
 @app.route("/")
