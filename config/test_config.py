@@ -2,5 +2,6 @@ from config import config
 
 
 def test_read_config():
-    cfg = config.read("../config.toml")
+    cfg = config.read("./config.toml")
     assert cfg != None
+    assert cfg.should_run_db_setup == True

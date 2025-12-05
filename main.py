@@ -1,9 +1,13 @@
 from datetime import datetime
 from flask import Flask, render_template
 from config import config
+from service.db_setup_service import run_db_setup
 
 
 cfg = config.read("config.toml")
+if cfg.should_run_db_setup:
+    run_db_setup(cfg)
+
 app = Flask(__name__)
 
 @app.route("/")

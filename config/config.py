@@ -8,6 +8,7 @@ class Config:
     A class containing app's configuration information.
     """
     should_run_db_setup: bool
+    db_conn_str: str
 
 
 def read(file_path: str) -> Config:
@@ -26,4 +27,4 @@ def read(file_path: str) -> Config:
         if with_db_setup_val and isinstance(with_db_setup_val, bool):
             with_db_setup = with_db_setup_val
 
-    return Config(with_db_setup)
+    return Config(with_db_setup, "")
