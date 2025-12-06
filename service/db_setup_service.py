@@ -6,7 +6,11 @@ from db.open import open
 
 
 def run_db_setup(cfg: Config) -> None:
-    with open(cfg.db_conn_str) as conn:
-        cursor = conn.cursor()
-        cursor.execute("CREATE TABLE test_table(id, data, date_created, date_updated)")
-        conn.commit()
+    conn = open(cfg.db_conn_str)
+    cursor = conn.cursor()
+    cursor.execute(
+        "CREATE TABLE IF NOT EXISTS test_table(id, data, date_created, date_updated)"
+    )
+
+    conn.commit()
+    conn.close()

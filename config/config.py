@@ -23,8 +23,15 @@ def read(file_path: str) -> Config:
     with_db_setup = False
     with open(file_path, mode='rb') as file:
         data = load(file)
-        with_db_setup_val = data.get("with_db_setup")
-        if with_db_setup_val and isinstance(with_db_setup_val, bool):
-            with_db_setup = with_db_setup_val
+        db_config: dict[str, str | bool] | None = data.get("database")
+        db_conn_str = ""
+        if db_config != None:
+            with_db_setup_val = db_config.get("with_db_setup")
+            if with_db_setup_val != None and isinstance(with_db_setup_val, bool):
+                with_db_setup = with_db_setup_val
 
-    return Config(with_db_setup, "")
+            db_conn_str = db_config.get("db_conn_str")
+            if not isinstance(db_conn_str, str):
+                raise ValueError("DB connection string isn't a string")
+
+    return Config(with_db_setup, db_conn_str)

@@ -14,7 +14,7 @@ app = Flask(__name__)
 def index() -> str:
     return render_template(
         "index.html",
-        current_time=datetime.now().isoformat()
+        current_time=datetime.now()
     )
 
 

@@ -1,1 +1,3 @@
+[database]
 with_db_setup=true
+db_conn_str="test.db"
