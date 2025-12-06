@@ -13,7 +13,7 @@ uv sync
 ### Running the app
 Debug:
 ```
-flask --app main run
+flask --app main run --debug
 ```
 
 Docker:

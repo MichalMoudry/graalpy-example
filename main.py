@@ -2,6 +2,8 @@ from datetime import datetime
 from flask import Flask, render_template
 from config import config
 from service.db_setup_service import run_db_setup
+from service.event_service import EventService
+from transport.contracts import EventResponseInfo
 
 
 cfg = config.read("config.toml")
@@ -21,3 +23,8 @@ def index() -> str:
 @app.route("/health")
 def health() -> str:
     return "healthy"
+
+
+@app.route("/events")
+def get_events() -> list[EventResponseInfo]:
+    return []
