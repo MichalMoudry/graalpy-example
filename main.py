@@ -1,16 +1,17 @@
-from datetime import datetime
-from flask import Flask, render_template
+"""from datetime import datetime
+from flask import Flask, Response, jsonify, render_template
 from config import config
 from service.db_setup_service import run_db_setup
 from service.event_service import EventService
 from transport.contracts import EventResponseInfo
+from datetime import datetime"""
 
 
 cfg = config.read("config.toml")
 if cfg.should_run_db_setup:
     run_db_setup(cfg)
 
-app = Flask(__name__)
+"""app = Flask(__name__)
 
 @app.route("/")
 def index() -> str:
@@ -27,4 +28,6 @@ def health() -> str:
 
 @app.route("/events")
 def get_events() -> list[EventResponseInfo]:
-    return []
+    ev_service = EventService()
+
+    return []"""
