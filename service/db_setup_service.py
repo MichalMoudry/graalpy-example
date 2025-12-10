@@ -9,7 +9,7 @@ def run_db_setup(cfg: Config) -> None:
     conn = open(cfg.db_conn_str)
     cursor = conn.cursor()
     cursor.execute(
-        "CREATE TABLE IF NOT EXISTS test_table(id, data, date_created, date_updated)"
+        "CREATE TABLE IF NOT EXISTS events(id, data, date_created)"
     )
 
     conn.commit()

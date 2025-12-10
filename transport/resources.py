@@ -5,6 +5,8 @@ import content_types
 
 from falcon import Request, Response
 from datetime import datetime
+from config.config import Config
+from service.event_service import EventService
 
 from .templates import get_template
 
@@ -25,6 +27,9 @@ class IndexResource:
 
 
 class EventsResource:
+    def __init__(self, cfg: Config) -> None:
+        self._event_service = EventService(cfg.db_conn_str)
+
     async def on_get(self, req: Request, resp: Response) -> None:
         resp.status = 200
         resp.media = {}

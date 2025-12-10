@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from tomllib import load
 
 
-@dataclass
+@dataclass(frozen = True)
 class Config:
     """
     A class containing app's configuration information.

@@ -16,4 +16,4 @@ if __name__ == "__main__":
     app = App()
     app.add_route("/health", resources.HealthResource())
     app.add_route("/", resources.IndexResource())
-    app.add_route("/events", resources.EventsResource())
+    app.add_route("/events", resources.EventsResource(cfg))
