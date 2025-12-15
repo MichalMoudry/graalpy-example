@@ -9,6 +9,7 @@ from config.config import Config
 from service.event_service import EventService
 
 from .templates import get_template
+from .contracts import EventResponseInfo
 
 
 class HealthResource:
@@ -31,5 +32,8 @@ class EventsResource:
         self._event_service = EventService(cfg.db_conn_str)
 
     async def on_get(self, req: Request, resp: Response) -> None:
+        response: list[EventResponseInfo] = []
+        response.append(EventResponseInfo.from_service_model())
+
         resp.status = 200
         resp.media = {}

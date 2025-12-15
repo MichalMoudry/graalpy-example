@@ -17,12 +17,16 @@ class EventService:
         """
         A method for retrieval of currently available events.
         """
+        if limit < 0:
+            raise ValueError("Limit can't be negative")
         result: list[EventInfo] = []
 
         with open(self._conn_str) as conn:
             cursor = conn.cursor()
-            res = cursor.execute("")
-            events = res.fetchall()
+            events = cursor.execute(
+                "SELECT * FROM events LIMIT ?", (limit,)
+            ).fetchall()
+
             if events:
                 for ev in events:
                     result.append(EventInfo(ev[0], ev[1], ev[2]))
