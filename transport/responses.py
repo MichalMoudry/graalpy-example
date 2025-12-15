@@ -9,6 +9,10 @@ from service.model import EventInfo
 
 @dataclass(frozen = True)
 class EventResponseInfo:
+    """
+    A class representing a part of a response with information about a single
+    event.
+    """
     id: int
     data: str
     created: datetime
