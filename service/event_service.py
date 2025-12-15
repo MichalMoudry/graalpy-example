@@ -37,5 +37,8 @@ class EventService:
         """
         A method for adding a new event.
         """
+        if data == "":
+            return
+
         with open(self._conn_str) as conn:
             conn.commit()
